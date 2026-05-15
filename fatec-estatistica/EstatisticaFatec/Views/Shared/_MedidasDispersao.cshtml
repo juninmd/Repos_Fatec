@@ -1,0 +1,40 @@
+﻿@model EstatisticaFatec.Core.Models.MedidasDispersao.MedidasDispersaoEntity
+
+<div class="well bs-component">
+    <fieldset class="form-horizontal" >
+        <legend> Medidas de Dispersão</legend>
+
+
+       @* <div class="form-group">
+            <label class="col-md-1 control-label">Média</label>
+            <div class="col-md-4">
+                <input class="form-control" readonly="" value="@Model.Variancia">
+            </div>
+        </div>*@
+
+        <div class="form-group">
+                <label class="col-md-1 control-label">Variância</label>
+                <div class="col-md-4">
+                    <input class="form-control" readonly="" value="@Model.Variancia">
+                </div>
+            </div>
+       
+
+            <div class="form-group">
+                <label class="col-md-1 control-label">Desvio Padrão</label>
+                <div class="col-md-4">
+                    <input class="form-control" readonly="" value="@Model.DP">
+                </div>
+            </div>
+        
+
+            <div class="form-group">
+                <label class="col-md-1 control-label" title="Coeficiente da variação">CV</label>
+                <div class="col-md-4">
+                    <input class="form-control" readonly="" value="@Model.CV%">
+                </div>
+            </div>
+        
+
+    </fieldset>
+</div>

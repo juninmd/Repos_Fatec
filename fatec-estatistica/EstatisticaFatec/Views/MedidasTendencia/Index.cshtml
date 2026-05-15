@@ -1,0 +1,47 @@
+﻿@model EstatisticaFatec.Core.Models.MedidasTendencia.MedidasTendenciaContainerEntity
+
+@{
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
+}
+@if (Model.InputValue.Any() == false)
+{
+    @Html.Partial("_AlertaParametros")
+}
+
+@section opcoes
+{
+    <li>
+        <a class="btn-floating" title="Informações" data-toggle="modal" data-target="#modalTendenciaCentral">
+            <i class="glyphicon glyphicon-book" aria-hidden="true"></i>
+        </a>
+    </li>
+}
+
+<div class="well bs-component">
+    <fieldset>
+        <legend>Medidas de Tendência Central</legend>
+        <div class="form-group">
+
+
+            <div class="col-xs-12">
+                <blockquote class="small">
+                    As medidas de centralidade são a Média Aritmética, a Moda e a Mediana.
+                    <small class="pull-right">
+                        <a target="_newblank" href="http://clubes.obmep.org.br/blog/tratamento-da-informacao-medidas-de-tendencia-central/medidas-de-tendencia-central-passando-a-limpo-as-ideias/">http://clubes.obmep.org.br/blog/tratamento-da-informacao-medidas-de-tendencia-central/medidas-de-tendencia-central-passando-a-limpo-as-ideias/</a>
+                    </small>
+                </blockquote>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<form method="POST" action="@Url.Action("Index")">
+    @Html.Partial("_Input")
+</form>
+
+@if (Model.InputValue.Any())
+{
+    @Html.Partial("_MedidasTendencia", Model.MedidasTendenciaEntity)
+
+}
+@Html.Partial("_ModalTendenciaCentral")

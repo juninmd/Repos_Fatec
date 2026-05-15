@@ -1,0 +1,57 @@
+<ion-app>
+
+  <ion-menu side="start" menuId="first" contentId="content1">
+    <ion-header>
+      <ion-toolbar>
+
+        <ion-item color="dark">
+          <ion-avatar slot="start">
+            <img [src]="sessionService.getPhoto()">
+          </ion-avatar>
+          <ion-title>{{sessionService.getFirstName()}}</ion-title>
+        </ion-item>
+
+
+      </ion-toolbar>
+    </ion-header>
+    <ion-content color="dark">
+      <ion-menu-toggle auto-hide="true">
+        <ion-button menuClose color="tertiary" expand="full" [routerLink]="'/home'">
+          <ion-icon name="time-outline" slot="start"></ion-icon>
+          Horários
+        </ion-button>
+        <ion-button color="tertiary" expand="full" [routerLink]="['/grade']">
+          <ion-icon name="bookmarks" slot="start"></ion-icon>
+          Grade
+        </ion-button>
+        <ion-button color="tertiary" expand="full" [routerLink]="['/avaliacoes']">
+          <ion-icon name="clipboard" slot="start"></ion-icon>
+          Avaliações
+        </ion-button>
+        <ion-button color="tertiary" expand="full" [routerLink]="['/em-curso']">
+          <ion-icon name="book" slot="start"></ion-icon>
+          Em Curso
+        </ion-button>
+        <ion-button color="tertiary" expand="full" [routerLink]="['/eventos']">
+          <ion-icon name="beer" slot="start"></ion-icon>
+          Eventos
+        </ion-button>
+        <ion-button color="tertiary" expand="full" [routerLink]="['/util']">
+          <ion-icon name="hammer" slot="start"></ion-icon>
+          Utilidades
+        </ion-button>
+        <ion-button (click)="github()" color="tertiary" expand="full">
+          <ion-icon name="logo-github" slot="start"></ion-icon>
+          Contribua
+        </ion-button>
+        <ion-button (click)="sair()" color="tertiary" expand="full">
+          <ion-icon name="close" slot="start"></ion-icon>
+          Sair
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="content1"></ion-router-outlet>
+
+</ion-app>

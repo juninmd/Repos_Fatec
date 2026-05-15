@@ -1,0 +1,276 @@
+﻿@using EstatisticaFatec.Helper
+@model EstatisticaFatec.Core.Models.DistribuicaoNormal.DistribuicaoNormalEntity
+
+@{
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
+}
+
+@if (Model.Probabilidade == 0)
+{
+    <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>Você ainda não preencheu os paramêtros! Por favor, preencha os paramêtros.</strong>
+    </div>
+}
+
+@section opcoes
+{
+    <li>
+        <a class="btn-floating" title="Informações" data-toggle="modal" data-target="#myModal">
+            <i class="glyphicon glyphicon-book" aria-hidden="true"></i>
+        </a>
+    </li>
+}
+
+<div class="well bs-component">
+    <fieldset>
+        <legend>Distribuição Normal</legend>
+        <div class="form-group">
+
+
+            <div class="col-xs-12">
+                <blockquote class="small">
+                    A distribuição normal conhecida também como distribuição gaussiana é sem dúvida a mais importante distribuição contínua. Sua importância se deve a vários fatores, entre eles podemos citar o teorema central do limite, o qual é um resultado fundamental em aplicações práticas e teóricas, pois ele garante que mesmo que os dados não sejam distribuídos segundo uma normal a média dos dados converge para uma distribuição normal conforme o número de dados aumenta.
+                    <small class="pull-right">
+                        <a target="_newblank" href="https://pt.wikipedia.org/wiki/Distribui%C3%A7%C3%A3o_normal">https://pt.wikipedia.org/wiki/Distribui%C3%A7%C3%A3o_normal</a>
+                    </small>
+                </blockquote>
+            </div>
+        </div>
+    </fieldset>
+
+</div>
+
+<div class="well bs-component">
+    <form class="form-horizontal" method="post" action="@Url.Action("Index")">
+        <fieldset>
+            <legend>Parametrização</legend>
+
+            @if (@Html.ViewData.ModelState.IsValid == false)
+            {
+                <div class="alert alert-warning alert-dismissable" style="background-color: #610883;">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <div class="row-action-primary">
+                        <i class="material-icons" style="color: white;float: left;">error</i>
+                    </div>
+                    <strong>@Html.ValidationMessage("error")</strong>
+                </div>
+            }
+            <div class="form-group">
+                <label class="col-md-2 control-label">Desvio Padrão</label>
+
+                <div class="col-md-3">
+                    <input class="form-control" required placeholder="@Html.Null(Model.DesvioPadrao)" value="@Html.Null(Model.DesvioPadrao)" name="DesvioPadrao" type="text">
+                </div>
+
+                <label class="col-md-2 control-label">Média Ponderada</label>
+
+                <div class="col-md-3">
+                    <input class="form-control" required placeholder="@Html.Null(Model.MediaPonderada)" value="@Html.Null(Model.MediaPonderada)" name="MediaPonderada" type="text">
+                </div>
+            </div>
+
+            <div class="col-md-10 col-md-offset-2 form-inline">
+                <div class="radio">
+                    <label>
+                        <input type="radio" class="radio-inline" name="TipoEntrada" required="" value="0">
+                        Menor
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" class="radio-inline" name="TipoEntrada" required="" value="1" />
+                        Entre
+                    </label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" class="radio-inline" name="TipoEntrada" required="" value="2" />
+                            Maior
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div id="divValorA">
+                    <label class="col-md-2 control-label">X:</label>
+                    <div class="col-md-3">
+                        <input class="form-control" required placeholder="@Html.Null(Model.Valor.Length > 0 ? Model?.Valor[0] : null)" name="Valor" type="text">
+                    </div>
+                </div>
+
+                <div id="divValorB" @(Model.TipoEntrada != 1 ? "style=display:none" : "")>
+                    <label class="col-md-2 control-label">Y:</label>
+                    <div class="col-md-3">
+                        <input id="txtY" class="form-control" @(Model.TipoEntrada == 1 ? "required" : "") placeholder="@Html.Null(Model.Valor.Length > 1 ? Model?.Valor[1] : null)" name="Valor" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-10 col-md-offset-2">
+                <button type="reset" class="btn btn-danger">Limpar</button>
+                <button type="submit" class="btn btn-primary">
+                    Enviar
+                    <div class="ripple-container"></div>
+                </button>
+            </div>
+
+            @if (Model.Probabilidade != 0)
+            {
+                <hr>
+                <div class="form-group">
+
+                    <div class="col-md-6">
+
+                        <label class="col-md-4 control-label">Probabilidade</label>
+
+                        <div class="col-md-8">
+                            <input class="form-control" placeholder="@Html.Null(Model.Probabilidade)" readonly="">
+                        </div>
+                    </div>
+
+
+                    @foreach (var z in Model.DistribuicaoNormalZEntity)
+                    {
+                        <div class="col-md-6">
+
+
+                            <label class="col-md-2 control-label">Z</label>
+
+                            <div class="col-md-3">
+                                <input class="form-control" placeholder="@Html.TakeOnly(z.Z)" readonly="">
+                            </div>
+
+                            <label class="col-md-2 control-label">Valor Tabela</label>
+                            <div class="col-md-3">
+                                <input class="form-control" placeholder="@Html.Null(z.ValorTabela)" readonly="">
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+                <div class="form-group">
+                    <div id="chartdiv"></div>
+                </div>
+
+            }
+
+
+
+
+        </fieldset>
+    </form>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("input[name=TipoEntrada]").prop("checked", false);
+            $("input[name=TipoEntrada][value=@Model.TipoEntrada]").prop("checked", true);
+        });
+        $("input[name=TipoEntrada]").change(function () {
+
+            if ($("input[name=TipoEntrada]:checked").val() != 1) {
+                $("#divValorB").hide();
+                $("#txtY").val("");
+                $("#txtY").removeAttr("required");
+            } else {
+                $("#divValorB").show();
+                $("#txtY").attr("required", "required").val("");
+            }
+        });
+
+
+    </script>
+    @if (Model.Probabilidade != 0)
+    {
+        <style>
+        </style>
+        <script src="~/Scripts/amcharts.js"></script>
+        <script src="~/Scripts/light.js"></script>
+        <script src="~/Scripts/serial.js"></script>
+        <script src="~/Scripts/propability.js"></script>
+        <script>
+
+            $(document).ready(function () {
+                createBellChart(@Html.FormatacaoObjetoDistribuicaoNormal(Model));
+            });
+
+        </script>
+    }
+}
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Entendendo as etapas</h4>
+            </div>
+            <div class="modal-body">
+
+                <fieldset>
+                    <h4>Legenda</h4>
+                    <div class="legenda-formula">
+
+                        <p>
+                            <code>Variância</code> É o cálculo sobre a média
+                        </p>
+                        <p>
+                            <code>Desvio Padrão</code> É a raiz quadrada da variância.
+                        </p>
+                        <p>
+                            <code><span class="media">X</span></code> É média
+                        </p>
+                        <p>
+                            <code><span>Z</span></code> Cálculo entre o valor aleatório, a média e o Desvio Padrão
+                        </p>
+                        <p>
+                            <code><span>Valor Z</span></code> Z representado na tabela
+                        </p>
+                    </div>
+
+
+                    <p>O primeiro passo é obtermos o valor de Z na tabela de distrubição normal, para isso necessitamos levantar algumas informações:</p>
+                    <ul>
+                        <li>Média Aritimética</li>
+                        <li>Desvio Padrão</li>
+                        <li>
+                            Range da Entrada
+                            <ul>
+                                <li>Menor</li>
+                                <li>Entre</li>
+                                <li>Maior</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <p>Agora vamos obter o valor Z seguindo a fórmula:</p>
+                    <pre>
+                        Z = (X - Média) / Desvio Padrão
+                    </pre>
+
+                    <img style="width: 100%;" class="img-rounded img-responsive" src="~/Content/img/distribuicaoNormal/tabela.jpg" />
+
+                    <p>Podemos fazer por exemplo a seguinte equação:</p>
+
+                    <pre>Z = 11.000 - 10.000 / 2.000 = 1.000 / 2000 = 0,5
+0,5 na tabela retorna '0,1915' logo fazemos a conta:
+R = 0,5 - 0,1915 = 0,3085 x100 = 30,85%          
+                     </pre>
+
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,237 @@
+﻿@using EstatisticaFatec.Helper
+@model EstatisticaFatec.Core.Models.Sistematica.SistematicaEntity
+
+@{
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
+}
+
+@if (Model.Inicial == 0)
+{
+    <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>Você ainda não preencheu os paramêtros! Por favor, preencha os paramêtros.</strong>
+    </div>
+}
+@section opcoes
+{
+    <li>
+        <a class="btn-floating" title="Informações" data-toggle="modal" data-target="#myModal">
+            <i class="glyphicon glyphicon-book" aria-hidden="true"></i>
+        </a>
+    </li>
+}
+
+<div class="well bs-component">
+    <fieldset>
+        <legend>Distribuição Aleatória Sistemática</legend>
+        <div class="form-group">
+            <div class="col-xs-12">
+                <blockquote class="small">
+                    Conveniente quando a população está ordenada segundo algum critério como fichas, lista telefônica, seguindo o exemplo.
+                    <ul>
+                        <li>
+                            Em uma produção diária de peças automotivas, podemos, a cada 20 peças produzidas, retirar uma para pertencer a uma amostra da produção de um dia.
+                        </li>
+
+                    </ul>
+                    <small class="pull-right">
+                        <a target="_newblank" href="https://sondagenseestudosdeopiniao.wordpress.com/amostragem/amostras-probabilisticas-e-nao-probabilisticas/amostragem-aleatoria-sistematica/">https://sondagenseestudosdeopiniao.wordpress.com/amostragem/amostras-probabilisticas-e-nao-probabilisticas/amostragem-aleatoria-sistematica/</a>
+                    </small>
+                </blockquote>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<div class="well bs-component">
+    <form class="form-horizontal" method="post" action="@Url.Action("Index")">
+        <fieldset>
+            <legend>Parametrização</legend>
+            @if (@Html.ViewData.ModelState.IsValid == false)
+            {
+                <div class="alert alert-warning alert-dismissable" style="background-color: #610883;">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <div class="row-action-primary">
+                        <i class="material-icons" style="color: white;float: left;">error</i>
+                    </div>
+                    <strong>@Html.ValidationMessage("error")</strong>
+                </div>
+            }
+            <div class="form-group">
+
+                <label class="col-md-2 control-label">População</label>
+                <div class="col-md-3">
+                    <input class="form-control" id="populacao" required placeholder="@Html.Null(Model.Populacao)" value="@Html.Null(Model.Populacao)" name="populacao" type="number" min="1">
+                </div>
+
+                <label class="col-md-2 control-label">Amostra</label>
+                <div class="col-md-3">
+                    <input class="form-control" required placeholder="@Html.Null(Model.Amostra)" value="@Html.Null(Model.Amostra)" name="amostra" type="number" min="1">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-2 control-label">Valor Inicial</label>
+                <div class="col-md-3">
+                    <input class="form-control" required placeholder="@Html.Null(Model.Inicial)" value="@Html.Null(Model.Inicial)" name="inicial" id="inicial" type="number" min="1">
+                </div>
+
+
+                <div class="col-md-offset-3 col-md-6">
+                    <button type="button" onclick="randomNumberSistematica()" class="btn btn-primary">Sortear</button>
+                </div>
+            </div>
+
+            <div class="col-md-10 col-md-offset-2">
+
+                <button type="reset" class="btn btn-danger">Limpar</button>
+                <button type="submit" class="btn btn-primary">Enviar<div class="ripple-container"></div></button>
+            </div>
+
+            @if (Model.Inicial != 0)
+            {
+                <hr />
+                <legend>Resultados</legend>
+
+                <ul class="bs-sistematica">
+                    @{
+                        var contador = 1;
+                    }
+                    @foreach (var item in @Model.Resultado)
+                    {
+                        <li>
+                            <div class="row">
+                                <span class="badge" title="Posição">@contador</span>
+                            </div>
+                            <div class="row">
+                                <span title="Pessoa escolhida" class="spanSistematica">@item</span>
+                            </div>
+
+                        </li>
+
+                        contador++;
+
+                    }
+                </ul>
+
+                        }
+
+
+        </fieldset>
+    </form>
+</div>
+
+@section scripts
+{
+    <script>
+        function randomNumberSistematica() {
+
+            var populacao = parseInt(document.getElementById("populacao").value);
+
+            if (populacao < 1) {
+                alert("Por favor, preencha algum valor maior que 1 na população");
+                return;
+            }
+
+            document.getElementById("inicial").value = Math.floor((Math.random() * parseInt(document.getElementById("populacao").value)) + 1);
+        }
+    </script>
+
+}
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Entendendo as etapas</h4>
+            </div>
+            <div class="modal-body">
+                <fieldset>
+                    <legend> Coletando paramêtros <span class="lesssmall pull-right">A população deve ser maior que a amostra.</span></legend>
+                    <img style="width: 100%;" class="img-rounded img-responsive" src="~/Content/img/estratificadaProporcional/estratificadaProporcional.jpg" />
+                    <p>Primeiro necessitamos descobrir o range, sendo a formula:</p>
+                    <code>População/Amostra</code>
+                    <p>Por exemplo, podemos então ter: </p>
+                    <table class="table table-responsive table-bordered">
+                        <tr>
+                            <td>População</td>
+                            <td>Amostra</td>
+                            <td>Range</td>
+                        </tr>
+                        <tbody>
+                            <tr>
+                                <td>12</td>
+                                <td>3</td>
+                                <td>4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <ul>
+                                <li>
+                                    1
+                                </li>
+                                <li>
+                                    2
+                                </li>
+                                <li>
+                                    3
+                                </li>
+                                <li>
+                                    4 <span class="badge">Escolhido</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <ul>
+                                <li>
+                                    5
+                                </li>
+                                <li>
+                                    6
+                                </li>
+                                <li>
+                                    7
+                                </li>
+                                <li>
+                                    8 <span class="badge">Escolhido</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <ul>
+                                <li>
+                                    9
+                                </li>
+                                <li>
+                                    10
+                                </li>
+                                <li>
+                                    11
+                                </li>
+                                <li>
+                                    12 <span class="badge">Escolhido</span>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

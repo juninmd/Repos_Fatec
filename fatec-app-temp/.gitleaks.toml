@@ -1,0 +1,4 @@
+[[allowlist]]
+description = "False positive: generic-api-key in src/environments/environment.prod.ts"
+rules = ["generic-api-key"]
+paths = ["src/environments/environment.prod.ts"]

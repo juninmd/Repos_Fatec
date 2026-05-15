@@ -1,0 +1,13 @@
+
+Ex2: Faltou a anotação @override nas classes que herdam de ator.
+     Conceitos de heranças com classes abstratas.
+     A partir do Override o ator muda seu humor.
+
+     Palco instancia 'ator feliz' que herda de 'ator'
+     é chamado atua de 'ator feliz'
+     e logo é chamado um método chamado altera onde o objeto que era de instância
+     feliz se transforma em 'ator triste'
+     é chamado atua de 'ator triste'
+
+
+Ex3: É feito ao extender os objetos, sobrescrevendo na linha 22.
