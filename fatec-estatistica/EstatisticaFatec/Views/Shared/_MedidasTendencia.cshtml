@@ -1,0 +1,29 @@
+﻿@using EstatisticaFatec.Helper
+@model EstatisticaFatec.Core.Models.MedidasTendencia.MedidasTendenciaEntity
+
+<div class="well bs-component">
+    <fieldset class="form-horizontal">
+        <legend>Medidas de Tendência Central </legend>
+
+        <div class="form-group">
+            <label class="col-md-1 control-label">Moda</label>
+            <div class="col-md-4">
+                <input class="form-control" readonly="" value="@Html.Moda(Model.Moda)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-1 control-label">Média</label>
+            <div class="col-md-4">
+                <input class="form-control" readonly="" value="@Model.Media">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-1 control-label">Mediana</label>
+            <div class="col-md-4">
+                <input class="form-control" readonly="" value="@Model.Mediana">
+            </div>
+        </div>
+    </fieldset>
+</div>

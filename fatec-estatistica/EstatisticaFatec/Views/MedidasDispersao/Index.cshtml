@@ -1,0 +1,50 @@
+﻿@model EstatisticaFatec.Core.Models.MedidasDispersao.MedidasDispersaoContainerEntity
+
+@{
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
+}
+
+@if (Model.InputValue.Any() == false)
+{
+    <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong>Você ainda não preencheu os paramêtros! Por favor, preencha os paramêtros.</strong>
+    </div>
+}
+@section opcoes
+{
+    <li>
+        <a class="btn-floating" title="Informações" data-toggle="modal" data-target="#modalMedidasDispersao">
+            <i class="glyphicon glyphicon-book" aria-hidden="true"></i>
+        </a>
+    </li>
+}
+
+
+<div class="well bs-component">
+    <fieldset>
+        <legend>Medidas de dispersão</legend>
+        <div class="form-group">
+
+
+            <div class="col-xs-12">
+                <blockquote class="small">
+                    Dispersão é sinônimo de variação ou variabilidade. Para medir a dispersão, duas medidas são usadas mais frequentemente: a amplitude e o desvio padrão.
+                    <small class="pull-right">
+                        <a target="_newblank" href="http://www.somatematica.com.br/estat/basica/pagina7.php">http://www.somatematica.com.br/estat/basica/pagina7.php</a>
+                    </small>
+                </blockquote>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<form method="POST" action="@Url.Action("Index")">
+    @Html.Partial("_Input")
+</form>
+
+@if (Model.InputValue.Any())
+{
+    @Html.Partial("_MedidasDispersao", Model.MedidasDispersaoEntity)
+}
+@Html.Partial("_ModalMedidasDispersao")

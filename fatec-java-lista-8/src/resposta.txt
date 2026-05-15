@@ -1,0 +1,4 @@
+Ex3: 
+    Ao utilizar classes abstrata, a classe filha só podera herdar dela.
+    Sendo que deverá ser feito override nos métodos da classe 
+    Ao utilizar interfaces, uma classe filha poderá herdar diversas interfaces.

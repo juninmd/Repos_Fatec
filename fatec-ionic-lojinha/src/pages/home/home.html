@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Lojinha
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let product of products">
+    <ion-card-content>
+      <ion-card-title>
+        {{product.title}}
+      </ion-card-title>
+      <p>
+        {{product.description}}
+      </p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col (click)="like(product)">
+        <button ion-button icon-left clear small>
+          <ion-icon md="{{product.like ? 'md-heart' : 'ios-heart-outline'}}"></ion-icon>
+          <div>Curtir</div>
+        </button>
+      </ion-col>
+
+      <ion-col center text-center (click)="details(product)">
+        <button ion-button icon-left clear small>
+          <ion-icon name="information-circle"></ion-icon>
+          <div>Detalhes</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <button (click)="contato()" ion-button type="button" block>Contato</button>
+</ion-content>
