@@ -1,0 +1,89 @@
+version: 2
+updates:
+  # Monorepo: não existe manifest na raiz, cada subprojeto tem o seu.
+  # npm (package.json / package-lock.json / yarn.lock)
+  - package-ecosystem: "npm"
+    directory: "/fatec-api"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/fatec-app-temp"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/fatec-apresentacao-agi"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/fatec-franca-api"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/fatec-franca-app"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/fatec-franca-core-api"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/fatec-hospital-api"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/fatec-hospital-web"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/fatec-ionic-lojinha"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/fatec-mobile"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/fatec-my-mind-api"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/fatec-my-mind-web"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/fatec-node-lojinha"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/fatec-projeto-scripts-neto"
+    schedule:
+      interval: "weekly"
+
+  # .NET (packages.config)
+  - package-ecosystem: "nuget"
+    directory: "/fatec-estatistica/EstatisticaFatec.Core"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget"
+    directory: "/fatec-estatistica/EstatisticaFatec"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget"
+    directory: "/fatec-gerador-tabela-trabalho-les/GeradorTabelaViaPDF"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget"
+    directory: "/fatec-sync-database"
+    schedule:
+      interval: "weekly"
+
+  # Imagens do docker-compose
+  - package-ecosystem: "docker"
+    directory: "/fatec-my-mind-api"
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
