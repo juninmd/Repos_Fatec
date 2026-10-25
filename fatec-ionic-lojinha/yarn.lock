@@ -119,6 +119,51 @@
     localforage "~1.4.2"
     localforage-cordovasqlitedriver "~1.5.0"
 
+"@rollup/rollup-darwin-arm64@4.44.0":
+  version "4.44.0"
+  resolved "https://registry.yarnpkg.com/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.44.0.tgz#60a51a61b22b1f4fdf97b4adf5f0f447f492759d"
+
+"@rollup/rollup-darwin-x64@4.44.0":
+  version "4.44.0"
+  resolved "https://registry.yarnpkg.com/@rollup/rollup-darwin-x64/-/rollup-darwin-x64-4.44.0.tgz#bfe3059440f7032de11e749ece868cd7f232e609"
+
+"@rollup/rollup-linux-arm64-gnu@4.44.0":
+  version "4.44.0"
+  resolved "https://registry.yarnpkg.com/@rollup/rollup-linux-arm64-gnu/-/rollup-linux-arm64-gnu-4.44.0.tgz#dbc5036a85e3ca3349887c8bdbebcfd011e460b0"
+
+"@rollup/rollup-linux-arm64-musl@4.44.0":
+  version "4.44.0"
+  resolved "https://registry.yarnpkg.com/@rollup/rollup-linux-arm64-musl/-/rollup-linux-arm64-musl-4.44.0.tgz#72efc633aa0b93531bdfc69d70bcafa88e6152fc"
+
+"@rollup/rollup-linux-x64-gnu@4.44.0":
+  version "4.44.0"
+  resolved "https://registry.yarnpkg.com/@rollup/rollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.44.0.tgz#597d40f60d4b15bedbbacf2491a69c5b67a58e93"
+
+"@rollup/rollup-linux-x64-musl@4.44.0":
+  version "4.44.0"
+  resolved "https://registry.yarnpkg.com/@rollup/rollup-linux-x64-musl/-/rollup-linux-x64-musl-4.44.0.tgz#0a062d6fee35ec4fbb607b2a9d933a9372ccf63a"
+
+"@rollup/rollup-win32-arm64-msvc@4.44.0":
+  version "4.44.0"
+  resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-arm64-msvc/-/rollup-win32-arm64-msvc-4.44.0.tgz#41ffab489857987c75385b0fc8cccf97f7e69d0a"
+
+"@rollup/rollup-win32-x64-msvc@4.44.0":
+  version "4.44.0"
+  resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.44.0.tgz#a36e79b6ccece1533f777a1bca1f89c13f0c5f62"
+
+"@stencil/core@^4.43.5":
+  version "4.45.2"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-4.45.2.tgz#0b87cc4533a0a832d4830a17ee8385293d8b14ce"
+  optionalDependencies:
+    "@rollup/rollup-darwin-arm64" "4.44.0"
+    "@rollup/rollup-darwin-x64" "4.44.0"
+    "@rollup/rollup-linux-arm64-gnu" "4.44.0"
+    "@rollup/rollup-linux-arm64-musl" "4.44.0"
+    "@rollup/rollup-linux-x64-gnu" "4.44.0"
+    "@rollup/rollup-linux-x64-musl" "4.44.0"
+    "@rollup/rollup-win32-arm64-msvc" "4.44.0"
+    "@rollup/rollup-win32-x64-msvc" "4.44.0"
+
 "@types/localforage@0.0.30":
   version "0.0.30"
   resolved "https://registry.yarnpkg.com/@types/localforage/-/localforage-0.0.30.tgz#3d60a6bf6dda38e3f8a469611598379f1f649509"
@@ -1816,9 +1861,11 @@ ionic-angular@3.9.2:
   version "3.9.2"
   resolved "https://registry.yarnpkg.com/ionic-angular/-/ionic-angular-3.9.2.tgz#75053e4a422aaae7d7cd668cc92cfd5cb29d38cc"
 
-ionicons@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-3.0.0.tgz#40b8daf4fd7a31150bd002160f66496e22a98c3c"
+ionicons@8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-8.1.0.tgz#b800f612ea846cc6983bd78a18e3f05ccf7efaa5"
+  dependencies:
+    "@stencil/core" "^4.43.5"
 
 ipaddr.js@1.6.0:
   version "1.6.0"
