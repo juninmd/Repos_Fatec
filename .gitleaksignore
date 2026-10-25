@@ -1,0 +1,7 @@
+# Falsos positivos/residuos historicos confirmados manualmente.
+# Chave web do Firebase (publica por design, vai no bundle do cliente) e senha local do MySQL em commit historico; o codigo atual exige DB_PASSWORD.
+# Formato: commit:arquivo:regra:linha (fingerprint exato; segredo novo no
+# mesmo arquivo continua sendo detectado).
+
+7da07ae6a66b98e43f6bd71580402fb1b76b9ff4:fatec-app-temp/src/environments/environment.prod.ts:gcp-api-key:7
+7da07ae6a66b98e43f6bd71580402fb1b76b9ff4:fatec-projeto-scripts-neto/aula-hoje/conexao.js:juninmd-hardcoded-password:10
