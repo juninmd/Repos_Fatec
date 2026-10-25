@@ -105,3 +105,4 @@ typings/
 
 # End of https://www.gitignore.io/api/linux,node
 node_modules
+.env.local
