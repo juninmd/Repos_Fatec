@@ -76,9 +76,9 @@
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/splash-screen/-/splash-screen-4.6.0.tgz#5fe2d8edbe61c3a4e7d874e2af7ea08a5f440665"
 
-"@ionic-native/status-bar@4.6.0":
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/@ionic-native/status-bar/-/status-bar-4.6.0.tgz#758a04c27e060f9b906eac1740efb0161ea1d4b9"
+"@ionic-native/status-bar@4.11.0":
+  version "4.11.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/status-bar/-/status-bar-4.11.0.tgz#25a5cc16880e58b85df34a7b3766de912f947c53"
 
 "@ionic/app-scripts@3.1.8":
   version "3.1.8"
