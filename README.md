@@ -34,6 +34,17 @@ Este repositório agrupa todos os projetos acadêmicos desenvolvidos ao longo do
 | `fatec-sync-database/` | Sincronização BD |
 | `fatec-tg/` | Trabalho de Graduação |
 
+## Como usar
+
+Não há build nem script único na raiz: cada pasta é um projeto independente, com seus próprios arquivos de dependência.
+
+- **Node.js / Ionic / Angular** (`package.json`): entre na pasta, rode `npm install` (ou `yarn`, quando houver `yarn.lock`) e depois o script definido em `package.json` (ex.: `npm start` ou `npm test`).
+- **.NET Framework** (`packages.config` + `.csproj`): restaure os pacotes com NuGet (`nuget restore` ou pelo Visual Studio) e abra o arquivo `.csproj` correspondente.
+- **Java** (`fatec-java-*`) e **C** (`fatec-c-*`, `fatec-compare-c`): cada lista/exercício é independente; compile com o JDK ou o compilador C disponível e execute o arquivo principal de cada pasta.
+- **Trabalho de Graduação** (`fatec-tg/`): documentos do TG, sem código de execução.
+
+Atualizações de dependências são acompanhadas pelo Dependabot (`.github/dependabot.yml`), que abre PRs semanais por subprojeto. Diretrizes gerais estão em [AGENTS.md](AGENTS.md) e o resumo de saúde do repositório em [docs/PROJECT_HEALTH.md](docs/PROJECT_HEALTH.md).
+
 ## Licença
 
 MIT
