@@ -8,7 +8,7 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^2.4.0",
     "consign": "^0.1.6",
     "ejs": "^7.0.2",
     "express": "^4.16.4",
