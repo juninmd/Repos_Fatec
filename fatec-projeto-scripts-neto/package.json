@@ -12,7 +12,7 @@
     "consign": "^0.1.6",
     "ejs": "^7.0.2",
     "express": "^4.16.4",
-    "mysql": "^2.16.0"
+    "mysql": "^2.18.1"
   },
   "main": "app.js",
   "author": "",
