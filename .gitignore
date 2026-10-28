@@ -1,0 +1,2 @@
+# Ignore local env files
+fatec-hospital-web/.env.local

@@ -77,12 +77,6 @@ updates:
     schedule:
       interval: "weekly"
 
-  # Imagens do docker-compose
-  - package-ecosystem: "docker"
-    directory: "/fatec-my-mind-api"
-    schedule:
-      interval: "weekly"
-
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
