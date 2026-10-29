@@ -13,19 +13,13 @@ array-flatten@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
 
-bluebird@^3.1.1:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
-
 bootstrap@^3.3.7:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
 
-consolidate@^0.14.5:
-  version "0.14.5"
-  resolved "https://registry.yarnpkg.com/consolidate/-/consolidate-0.14.5.tgz#5a25047bc76f73072667c8cb52c989888f494c63"
-  dependencies:
-    bluebird "^3.1.1"
+consolidate@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/consolidate/-/consolidate-1.0.4.tgz#9052e88bf3cf89a444df3cb61f1d4c6b9c8afcf0"
 
 content-disposition@0.5.2:
   version "0.5.2"
